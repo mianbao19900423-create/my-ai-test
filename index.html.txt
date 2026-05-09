@@ -1,22 +1,46 @@
+<!-- 替换你 index.html 里的所有内容 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个 AI 产品测试</title>
+    <title>我的 AI 助手测试</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f9; }
-        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #333; }
-        p { color: #666; }
-        .btn { display: inline-block; padding: 10px 20px; background: #0070f3; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        body { font-family: -apple-system, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .chat-container { background: white; width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); padding: 20px; }
+        .input-group { display: flex; gap: 10px; margin-top: 20px; }
+        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        button { padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background: #333; }
+        .message { background: #e7f3ff; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>🔥 我的 AI 产品即将上线！</h1>
-        <p>这是我为 AI 产品准备的第一个测试页面。</p>
-        <a href="#" class="btn">点击测试功能</a>
+    <div class="chat-container">
+        <h2>🤖 AI 助手测试版</h2>
+        <div id="chat-box">
+            <div class="message">你好！我是你的 AI 助手，虽然我现在还没连上大脑（API），但我已经准备好上架 Vercel 了。</div>
+        </div>
+        <div class="input-group">
+            <input type="text" id="user-input" placeholder="请输入你的问题...">
+            <button onclick="send()">发送</button>
+        </div>
     </div>
+
+    <script>
+        function send() {
+            const input = document.getElementById('user-input');
+            const box = document.getElementById('chat-box');
+            if (input.value) {
+                const msg = document.createElement('div');
+                msg.className = 'message';
+                msg.style.background = '#f1f1f1';
+                msg.innerText = "用户说：" + input.value;
+                box.appendChild(msg);
+                input.value = '';
+                // 这里以后就是接 OpenAI 的地方
+            }
+        }
+    </script>
 </body>
 </html>
